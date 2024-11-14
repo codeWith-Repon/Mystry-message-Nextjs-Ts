@@ -8,6 +8,8 @@ import { request } from "http";
 export async function POST(request: Request) {
 
     try {
+        await dbConnect();
+        
         const { username, email, password } = await request.json()
 
         const existingUserVerifiedByUsername = await UserModel.findOne({
